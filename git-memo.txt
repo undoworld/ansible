@@ -1,0 +1,8 @@
+ 582  git clone git@github.com:undoworld/ansible.git
+  602  git add -A 
+  603  git status 
+  604  git commit
+  605  git log
+  607  git remote -v
+  608  git push origin master
+
