@@ -1,0 +1,4 @@
+  - hosts: zabbix-server
+    sudo: yes
+    roles:
+      - undoworld.zabbix

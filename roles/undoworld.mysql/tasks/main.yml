@@ -1,0 +1,26 @@
+# via http://yteraoka.github.io/ansible-tutorial/
+- name: be sure mysql-server is installed
+  yum: name={{ item }} state=installed
+  with_items:
+    - mysql-server
+    - MySQL-python
+  tags: mysqld
+
+# mysqld の起動、自動起動設定
+- name: be sure mysqld is running and enabled
+  service: name=mysqld state=running enabled=yes
+  tags: mysqld
+
+# zabbix 用 DB の作成
+- name: Create database
+  mysql_db: db=zabbix state=present encoding=utf8
+  tags: mysqld
+
+# zabbix 用 DB ユーザーの作成
+- name: Create database user
+  mysql_user: >
+    name=zabbix
+    password="zabbix"
+    priv=zabbix.*:ALL
+    state=present
+  tags: mysqld

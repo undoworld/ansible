@@ -1,0 +1,6 @@
+  - hosts: zabbix-server
+    sudo: yes
+    roles:
+      - undoworld.mysql
+      - undoworld.zabbix
+
