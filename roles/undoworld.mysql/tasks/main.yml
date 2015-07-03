@@ -18,9 +18,31 @@
 
 # zabbix 用 DB ユーザーの作成
 - name: Create database user
-  mysql_user: >
+  mysql_user: 
     name=zabbix
     password="zabbix"
     priv=zabbix.*:ALL
     state=present
   tags: mysqld
+
+- name: create tables for zabbix
+  mysql_db: 
+    name=zabbix
+    state=import
+    target=/usr/share/doc/zabbix-server-mysql-2.2.9/create/schema.sql
+  tags: mysqld
+
+- name: create tables for zabbix2
+  mysql_db:
+    name=zabbix
+    state=import
+    target=/usr/share/doc/zabbix-server-mysql-2.2.9/create/images.sql
+  tags: mysqld
+
+- name: create tables for zabbix3
+  mysql_db:
+    name=zabbix
+    state=import
+    target=/usr/share/doc/zabbix-server-mysql-2.2.9/create/data.sql
+  tags: mysqld
+
