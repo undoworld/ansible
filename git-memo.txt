@@ -1,3 +1,12 @@
+git init
+git add README.md
+git commit -m "first commit"
+git remote add origin git@github.com:undoworld/cron_checker.git
+git push -u origin master
+
+  18  git config --global user.name "undoworld"
+   19  git config --global user.email "kenichiro.ando@gmail.com"
+ 
  582  git clone git@github.com:undoworld/ansible.git
   602  git add -A 
   603  git status 
